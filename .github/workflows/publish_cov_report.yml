@@ -58,13 +58,10 @@ jobs:
     
     - name: Deploy coverage report to GitHub Pages
       if: github.event_name != 'pull_request'
-      uses: peaceiris/actions-gh-pages@v4
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./CoverageReport
-        destination_dir: coverage
-        keep_files: true
-        enable_jekyll: false
-        cname: ''
-        user_name: 'github-actions[bot]'
-        user_email: 'github-actions[bot]@users.noreply.github.com'
+        folder: ./CoverageReport
+        target-folder: coverage
+        token: ${{ secrets.GITHUB_TOKEN }}
+        clean: false
+        commit-message: 'docs: update coverage report'
