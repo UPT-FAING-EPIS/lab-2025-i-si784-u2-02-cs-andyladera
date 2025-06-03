@@ -176,7 +176,7 @@ https://upt-faing-epis.github.io/lab-2025-i-si784-u2-02-cs-andyladera/coverage/
 El paquete NuGet generado está disponible en GitHub Packages. Puedes instalarlo usando el siguiente comando:
 
 ```
-dotnet add package Primes.Lib --version 1.0.0-andyladera --source https://nuget.pkg.github.com/UPT-FAING-EPIS/index.json
+dotnet add package Primes.Lib --version 2022074258 --source https://nuget.pkg.github.com/UPT-FAING-EPIS/index.json
 ```
 
 ## Implementación
