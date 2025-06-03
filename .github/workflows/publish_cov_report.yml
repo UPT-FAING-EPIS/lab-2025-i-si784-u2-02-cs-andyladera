@@ -41,15 +41,10 @@ jobs:
           /p:CoverletOutputFormat=cobertura
         
         # Encontrar y copiar el archivo de cobertura
-        mkdir -p ../CoverageResults
-        find . -name "coverage.cobertura.xml" -exec cp {} ../CoverageResults/ \;
-    
-    - name: Generate coverage report
-      uses: danielpalme/ReportGenerator-GitHub-Action@5.2.0
-      with:
-        reports: './CoverageResults/*.xml'
-        targetdir: './CoverageReport'
-        reporttypes: 'HtmlInline_AzurePipelines;Cobertura;Badges'
+        find . -name "coverage.cobertura.xml" -type f -exec cp {} ../coverage.cobertura.xml \;
+        mkdir -p ../CoverageReport
+        dotnet tool install -g dotnet-reportgenerator-globaltool
+        reportgenerator -reports:../coverage.cobertura.xml -targetdir:../CoverageReport -reporttypes:"HtmlInline_AzurePipelines;Cobertura;Badges"
     
     - name: Upload coverage report artifact
       uses: actions/upload-artifact@v4
