@@ -49,13 +49,14 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v2022074258
-        release_name: Release v2022074258
+        tag_name: v2022074258-${{ github.run_number }}
+        release_name: Release v2022074258-${{ github.run_number }}
         draft: false
         prerelease: false
     
     - name: Upload NuGet package to Release
       uses: softprops/action-gh-release@v2
       with:
+        tag_name: v2022074258-${{ github.run_number }}
         files: ./PrimeService/Primes.Lib/bin/Release/Primes.Lib.2022074258.nupkg
         token: ${{ secrets.GITHUB_TOKEN }}
