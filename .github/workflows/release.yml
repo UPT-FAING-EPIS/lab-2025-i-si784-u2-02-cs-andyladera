@@ -36,7 +36,7 @@ jobs:
     - name: Pack NuGet package
       run: |
         cd PrimeService/Primes.Lib
-        dotnet pack --configuration Release -p:PackageVersion=v2022074258 /p:RepositoryUrl=${{ github.server_url }}/${{ github.repository }}
+        dotnet pack --configuration Release -p:PackageVersion=2022074258 /p:RepositoryUrl=${{ github.server_url }}/${{ github.repository }}
     
     - name: Push to GitHub Packages
       run: |
@@ -49,13 +49,13 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        tag_name: v2022074258
+        release_name: Release v2022074258
         draft: false
         prerelease: false
     
     - name: Upload NuGet package to Release
       uses: softprops/action-gh-release@v2
       with:
-        files: ./PrimeService/Primes.Lib/bin/Release/Primes.Lib.v2022074258.nupkg
+        files: ./PrimeService/Primes.Lib/bin/Release/Primes.Lib.2022074258.nupkg
         token: ${{ secrets.GITHUB_TOKEN }}
