@@ -36,12 +36,12 @@ jobs:
     
     - name: Deploy to GitHub Pages
       if: github.event_name != 'pull_request'
-      uses: peaceiris/actions-gh-pages@v4
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs/_site
-        force_orphan: true
-        enable_jekyll: false
-        cname: ''
-        user_name: 'github-actions[bot]'
-        user_email: 'github-actions[bot]@users.noreply.github.com'
+        folder: ./docs/_site
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
+        clean-exclude: |
+          coverage/**
+        single-commit: true
+        commit-message: 'docs: update API documentation'

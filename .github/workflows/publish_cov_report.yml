@@ -1,10 +1,11 @@
 name: Publish Coverage Report
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  workflow_run:
+    workflows: ["Publish Documentation"]
+    types:
+      - completed
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:
@@ -64,4 +65,7 @@ jobs:
         target-folder: coverage
         token: ${{ secrets.GITHUB_TOKEN }}
         clean: false
+        clean-exclude: |
+          **/*
+        single-commit: false
         commit-message: 'docs: update coverage report'
