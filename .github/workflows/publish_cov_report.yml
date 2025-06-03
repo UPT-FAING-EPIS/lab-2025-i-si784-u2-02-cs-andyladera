@@ -19,6 +19,9 @@ jobs:
       with:
         dotnet-version: '9.0.x'
     
+    - name: Install coverlet
+      run: dotnet tool install --global coverlet.console
+    
     - name: Restore dependencies
       run: |
         cd PrimeService
@@ -27,17 +30,23 @@ jobs:
     - name: Build
       run: |
         cd PrimeService
-        dotnet build --no-restore
+        dotnet build --configuration Release
     
     - name: Test with coverage
       run: |
         cd PrimeService
-        dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=../CoverageResults/
+        dotnet test --configuration Release --no-build --verbosity normal \
+          /p:CollectCoverage=true \
+          /p:CoverletOutputFormat=cobertura
+        
+        # Encontrar y copiar el archivo de cobertura
+        mkdir -p ../CoverageResults
+        find . -name "coverage.cobertura.xml" -exec cp {} ../CoverageResults/ \;
     
     - name: Generate coverage report
       uses: danielpalme/ReportGenerator-GitHub-Action@5.2.0
       with:
-        reports: './PrimeService/CoverageResults/coverage.cobertura.xml'
+        reports: './CoverageResults/*.xml'
         targetdir: './CoverageReport'
         reporttypes: 'HtmlInline_AzurePipelines;Cobertura;Badges'
     
