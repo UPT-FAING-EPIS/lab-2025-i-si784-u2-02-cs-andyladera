@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+<coverage line-rate="1" branch-rate="1" lines-covered="5" lines-valid="5" branches-covered="6" branches-valid="6" complexity="6" version="0" timestamp="1748969237">
+  <sources>
+    <source>/</source>
+  </sources>
+  <packages>
+    <package name="Primes.Lib" line-rate="1" branch-rate="1" complexity="6">
+      <classes>
+        <class name="Primes.Lib.PrimeService" filename="/home/runner/work/lab-2025-i-si784-u2-02-cs-andyladera/lab-2025-i-si784-u2-02-cs-andyladera/PrimeService/Primes.Lib/PrimeServices.cs" line-rate="1" branch-rate="1" complexity="6">
+          <methods>
+            <method name="IsPrime" signature="(System.Int32)" line-rate="1" branch-rate="1" complexity="6">
+              <lines>
+                <line number="16" hits="27" branch="true" condition-coverage="100% (2/2)" />
+                <line number="20" hits="66" branch="true" condition-coverage="100% (2/2)" />
+                <line number="22" hits="25" branch="true" condition-coverage="100% (2/2)" />
+                <line number="24" hits="11" branch="false" />
+                <line number="28" hits="8" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="16" hits="27" branch="true" condition-coverage="100% (2/2)" />
+            <line number="20" hits="66" branch="true" condition-coverage="100% (2/2)" />
+            <line number="22" hits="25" branch="true" condition-coverage="100% (2/2)" />
+            <line number="24" hits="11" branch="false" />
+            <line number="28" hits="8" branch="false" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>
