@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '9.0.x'
     
@@ -45,7 +45,7 @@ jobs:
     
     - name: Create Release
       id: create_release
-      uses: actions/create-release@v1
+      uses: softprops/action-gh-release@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
@@ -55,11 +55,7 @@ jobs:
         prerelease: false
     
     - name: Upload NuGet package to Release
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: softprops/action-gh-release@v2
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./PrimeService/Primes.Lib/bin/Release/Primes.Lib.1.0.0-andyladera.nupkg
-        asset_name: Primes.Lib.1.0.0-andyladera.nupkg
-        asset_content_type: application/octet-stream
+        files: ./PrimeService/Primes.Lib/bin/Release/Primes.Lib.1.0.0-andyladera.nupkg
+        token: ${{ secrets.GITHUB_TOKEN }}
