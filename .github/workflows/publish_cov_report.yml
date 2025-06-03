@@ -63,4 +63,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./CoverageReport
         destination_dir: coverage
-        force_orphan: false
+        keep_files: true
