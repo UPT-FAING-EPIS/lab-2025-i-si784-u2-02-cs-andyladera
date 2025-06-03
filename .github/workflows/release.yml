@@ -36,7 +36,7 @@ jobs:
     - name: Pack NuGet package
       run: |
         cd PrimeService/Primes.Lib
-        dotnet pack --configuration Release -p:PackageVersion=1.0.0-andyladera /p:RepositoryUrl=${{ github.server_url }}/${{ github.repository }}
+        dotnet pack --configuration Release -p:PackageVersion=v2022074258 /p:RepositoryUrl=${{ github.server_url }}/${{ github.repository }}
     
     - name: Push to GitHub Packages
       run: |
@@ -57,5 +57,5 @@ jobs:
     - name: Upload NuGet package to Release
       uses: softprops/action-gh-release@v2
       with:
-        files: ./PrimeService/Primes.Lib/bin/Release/Primes.Lib.1.0.0-andyladera.nupkg
+        files: ./PrimeService/Primes.Lib/bin/Release/Primes.Lib.v2022074258.nupkg
         token: ${{ secrets.GITHUB_TOKEN }}
