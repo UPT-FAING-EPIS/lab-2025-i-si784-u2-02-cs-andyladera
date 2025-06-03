@@ -1,0 +1,65 @@
+name: Release NuGet Package
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '9.0.x'
+    
+    - name: Restore dependencies
+      run: |
+        cd PrimeService
+        dotnet restore
+    
+    - name: Build
+      run: |
+        cd PrimeService
+        dotnet build --configuration Release --no-restore
+    
+    - name: Test
+      run: |
+        cd PrimeService
+        dotnet test --configuration Release --no-build --verbosity normal
+    
+    - name: Pack NuGet package
+      run: |
+        cd PrimeService/Primes.Lib
+        dotnet pack --configuration Release -p:PackageVersion=1.0.0-andyladera /p:RepositoryUrl=${{ github.server_url }}/${{ github.repository }}
+    
+    - name: Push to GitHub Packages
+      run: |
+        cd PrimeService/Primes.Lib
+        dotnet nuget push bin/Release/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --skip-duplicate
+    
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+    
+    - name: Upload NuGet package to Release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./PrimeService/Primes.Lib/bin/Release/Primes.Lib.1.0.0-andyladera.nupkg
+        asset_name: Primes.Lib.1.0.0-andyladera.nupkg
+        asset_content_type: application/octet-stream
