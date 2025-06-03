@@ -1,0 +1,31 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: Primes.Lib
+  name: Primes.Lib
+  href: api/Primes.Lib.html
+  commentId: N:Primes.Lib
+  fullName: Primes.Lib
+  nameWithType: Primes.Lib
+- uid: Primes.Lib.PrimeService
+  name: PrimeService
+  href: api/Primes.Lib.PrimeService.html
+  commentId: T:Primes.Lib.PrimeService
+  fullName: Primes.Lib.PrimeService
+  nameWithType: PrimeService
+- uid: Primes.Lib.PrimeService.IsPrime(System.Int32)
+  name: IsPrime(int)
+  href: api/Primes.Lib.PrimeService.html#Primes_Lib_PrimeService_IsPrime_System_Int32_
+  commentId: M:Primes.Lib.PrimeService.IsPrime(System.Int32)
+  name.vb: IsPrime(Integer)
+  fullName: Primes.Lib.PrimeService.IsPrime(int)
+  fullName.vb: Primes.Lib.PrimeService.IsPrime(Integer)
+  nameWithType: PrimeService.IsPrime(int)
+  nameWithType.vb: PrimeService.IsPrime(Integer)
+- uid: Primes.Lib.PrimeService.IsPrime*
+  name: IsPrime
+  href: api/Primes.Lib.PrimeService.html#Primes_Lib_PrimeService_IsPrime_
+  commentId: Overload:Primes.Lib.PrimeService.IsPrime
+  isSpec: "True"
+  fullName: Primes.Lib.PrimeService.IsPrime
+  nameWithType: PrimeService.IsPrime
