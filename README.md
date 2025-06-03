@@ -153,3 +153,43 @@ ReportGenerator "-reports:./*/*/*/coverage.cobertura.xml" "-targetdir:Cobertura"
 2. Completar la documentación del Clases, atributos y métodos para luego generar una automatización (publish_docs.yml) que genere la documentación utilizando DocFx y la publique en una Github Page
 3. Generar una automatización (publish_cov_report.yml) que: * Compile el proyecto y ejecute las pruebas unitarias, * Genere el reporte de cobertura, * Publique el reporte en Github Page
 4. Generar una automatización (release.yml) que: * Genere el nuget con su codigo de matricula como version del componente, * Publique el nuget en Github Packages, * Genere el release correspondiente
+
+## Documentación y Reportes
+
+### Documentación API
+La documentación de la API generada con DocFx está disponible en GitHub Pages en la siguiente URL:
+
+```
+https://upt-faing-epis.github.io/lab-2025-i-si784-u2-02-cs-andyladera/
+```
+
+### Reporte de Cobertura
+El reporte de cobertura de código está disponible en GitHub Pages en la siguiente URL:
+
+```
+https://upt-faing-epis.github.io/lab-2025-i-si784-u2-02-cs-andyladera/coverage/
+```
+
+### Paquete NuGet
+El paquete NuGet generado está disponible en GitHub Packages. Puedes instalarlo usando el siguiente comando:
+
+```
+dotnet add package Primes.Lib --version 1.0.0-andyladera --source https://nuget.pkg.github.com/UPT-FAING-EPIS/index.json
+```
+
+## Implementación
+
+### Verificación de Números Primos
+Se ha implementado la lógica para verificar números primos del 2 al 20 utilizando un algoritmo eficiente que verifica divisibilidad hasta la raíz cuadrada del número.
+
+### Pruebas Unitarias
+Se han implementado pruebas unitarias completas para verificar:
+- Números menores que 2 (no primos)
+- Números primos entre 2 y 20 (2, 3, 5, 7, 11, 13, 17, 19)
+- Números no primos entre 2 y 20 (4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20)
+
+### Automatizaciones
+Se han implementado tres workflows de GitHub Actions:
+1. **publish_docs.yml**: Genera y publica la documentación de la API
+2. **publish_cov_report.yml**: Genera y publica el reporte de cobertura
+3. **release.yml**: Genera y publica el paquete NuGet y crea un release en GitHub
