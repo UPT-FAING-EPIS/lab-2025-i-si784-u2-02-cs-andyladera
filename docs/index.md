@@ -19,7 +19,7 @@ Para obtener información detallada sobre las clases y métodos, consulte la [Re
 ## Reportes
 
 <div style="text-align: center; margin: 20px 0;">
-  <a href="../coverage/index.html" style="display: inline-block; background-color: #4CAF50; color: white; padding: 10px 20px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+  <a href="./coverage/index.html" style="display: inline-block; background-color: #4CAF50; color: white; padding: 10px 20px; text-align: center; text-decoration: none; font-size: 16px; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
     Ver Reporte de Cobertura
   </a>
 </div>
